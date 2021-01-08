@@ -55,8 +55,8 @@ function removeCol(){
  col = col - 1;
  let table = document.getElementById("table");
  let last = table.rows[0].cells.length-1;
- for(let i = 0; i < table.rows.length; i++){
-    table.rows[i].deleteCell(last);
- }
+     for(let i = 0; i < table.rows.length; i++){
+        table.rows[i].deleteCell(last);
+     }
  }
 }
