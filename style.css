@@ -20,3 +20,14 @@
     grid-template-columns: repeat(10, 1fr);  
 }
 
+
+#table, .grid-row, .grid-cell{
+ border: 3px solid black;
+ border-collapse: collapse;	 
+ padding: 30px;
+ 
+}
+ 
+#table{
+ margin: auto;
+}
