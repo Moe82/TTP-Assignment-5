@@ -1,13 +1,14 @@
 let col = 1;
 let row = 0;
 
+//Function to create each cell
 function createCell() {
     let cell = document.createElement("td");
     cell.classList.add("grid-cell");
     return cell;
 }
 
-
+//Function to add a row
 function addRow() {
     let table = document.getElementById("table");
     let newRow = document.createElement("tr");
@@ -20,7 +21,7 @@ function addRow() {
     row++;
 }
 
-
+//function to add a column
 function addCol() {
     let table = document.getElementById("table");
     let newCol = document.getElementsByClassName("grid-row");
@@ -31,6 +32,7 @@ function addCol() {
     col++;
 }
 
+//function to remove a row
 function removeRow(){
  if (row  === 1){
     for (let i = rows[0].cells.length-1; i >= 0; i--){
@@ -45,6 +47,7 @@ function removeRow(){
  }
 }
 
+//function to remove a column
 function removeCol(){
  if (col === 1){
     for (let i = row.length-1; i >= 0; i--){
@@ -59,4 +62,25 @@ function removeCol(){
         table.rows[i].deleteCell(last);
      }
  }
+}
+
+//function for color red
+function turnRed(){
+ document.getElementById("red").style.backgroundColor = 'red';
+ 
+}
+
+//function for color green
+function turnGreen(){
+
+}
+
+//function for color blue
+function turnBlue(){
+
+}
+
+//funciton for color purple
+function turnPurple(){
+
 }

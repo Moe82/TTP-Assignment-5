@@ -5,21 +5,23 @@
         <link rel="stylesheet" href="style.css">    
     </head>
     <body>
-	<div class= "dropDownColor">
-		<label for="dropColor"> Colors: </label>
-		<select>
-			<option id="red" onclick="turnRed()"> Red </option>
-			<option id="green" onclick="turnGreen()"> Green </option>
-			<option id="blue" onclick="turnBlue()"> Blue </option>
-			<option id="black" onclick="turnBlack()"> Black </option>
-			<option id="white" onclick="turnWhite()"> White </option>
-		</select>
+	<div class="bar">
+		<ul>
+			<button class="addRowButton" onclick= "addRow()"> Add Row </button>
+		        <button class="addColButton" onclick= "addCol()"> Add Column </button>
+        		<button class="removeRowButton" onclick= "removeRow()"> Remove Row </button>
+        		<button class="removeColButton" onclick= "removeCol()"> Remove Column </button>
+
+			<label id= "labelColor">Color: </label>
+ 			<select class= "dropdown-color">
+				<option style="color:Red;" id="red" onclick="turnRed()"> Red </option>
+				<option style="color:Green;" id="green" onclick="turnGreen()"> Green </option>
+				<option style="color:Blue;" id="blue" onclick="turnBlue()"> Blue </option>
+				<option style="color:Purple;" id="purple" onclick="turnPurple()"> Purple </option>
+			</select>
+		</ul>		
 	</div>
         
-	<button class="addRowButton" onclick= "addRow()"> Add Row </button>
-	<button class="addColButton" onclick= "addCol()"> Add Column </button>
-	<button class="removeRowButton" onclick= "removeRow()"> Remove Row </button>
-        <button class="removeColButton" onclick= "removeCol()"> Remove Column </button>
 
 	<table id="table"> </table>
         <script src="script.js"></script>
