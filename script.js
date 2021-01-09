@@ -71,8 +71,8 @@ function turnRed(){
 }
 
 //function for color green
-function turnGreen(){
-
+function turnGreen(){ 
+document.getElementById("green").style.backgroundColor = 'green';
 }
 
 //function for color blue
