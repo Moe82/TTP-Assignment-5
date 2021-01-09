@@ -110,14 +110,11 @@ function turnPurple(){
 }
 
 //function for setting uncolored block to color
-function setUncolored(){
-for (let i = 0; i < row.length; i++){
-    for (let j = 0; j < row[0].length; j++){
-      if (this.color === "empty")
-    	color = currentColor
-    }
-
-
- }
-
-}
+//function fillUncolored(){
+//for (let i = 0; i < row.length; i++){
+  //  for (let j = 0; j < row[0].length; j++){
+    //  if (this.color === "empty")
+    //	color = currentColor
+   // }
+// }
+//}
