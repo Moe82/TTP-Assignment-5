@@ -1,12 +1,37 @@
-let col = 1;
+let col = 0;
 let row = 0;
+let coloring = false;
+let currentColor = "white";
 
 //Function to create each cell
-function createCell() {
-    let cell = document.createElement("td");
-    cell.classList.add("grid-cell");
-    return cell;
+function createBlock() {
+    let block = document.createElement("td");
+    block.classList.add("grid-cell");
+    block.classList.add("empty");
+    block.addEventListener("click", event =>{
+     if (coloring){
+           block.style.backgroundColor = currentColor;
+           block.classList.remove("empty");
+        }
+    });
+    block.addEventListener("mousedown", event =>{
+     coloring = true;
+    });
+    block.addEventListener("mousemove", event =>{
+	if (coloring){
+	   block.style.backgroundColor = currentColor;
+ 	   block.classList.remove("empty");
+	}
+    });
+    block.addEventListener("mouseup", event => {
+       if (coloring){      
+	   coloring = false;
+       }
+    });
+
+    return block;
 }
+
 
 //Function to add a row
 function addRow() {
@@ -16,7 +41,7 @@ function addRow() {
     table.appendChild(newRow);
 
     for (let i = 0; i < col; i++) {
-        newRow.appendChild(createCell());
+        newRow.appendChild(createBlock());
     }
     row++;
 }
@@ -27,12 +52,12 @@ function addCol() {
     let newCol = document.getElementsByClassName("grid-row");
 
     for (let i = 0; i < newCol.length; i++) {
-        newCol[i].appendChild(createCell());
+        newCol[i].appendChild(createBlock());
     }
     col++;
 }
 
-//function to remove a row
+//Function to remove a row
 function removeRow(){
  if (row  === 1){
     for (let i = rows[0].cells.length-1; i >= 0; i--){
@@ -66,21 +91,33 @@ function removeCol(){
 
 //function for color red
 function turnRed(){
- document.getElementById("red").style.backgroundColor = 'red';
- 
+ currentColor = "red";
 }
 
 //function for color green
 function turnGreen(){ 
-document.getElementById("green").style.backgroundColor = 'green';
+ currentColor = "green";
 }
 
 //function for color blue
 function turnBlue(){
-
+ currentColor = "blue";
 }
 
 //funciton for color purple
 function turnPurple(){
+ currentColor = "purple";
+}
+
+//function for setting uncolored block to color
+function setUncolored(){
+for (let i = 0; i < row.length; i++){
+    for (let j = 0; j < row[0].length; j++){
+      if (this.color === "empty")
+    	color = currentColor
+    }
+
+
+ }
 
 }
