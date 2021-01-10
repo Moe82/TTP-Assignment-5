@@ -1,37 +1,34 @@
+//function to reset all cells
 let col = 0;
 let row = 0;
 let coloring = false;
-let currentColor = "white";
+let currentColor = "Blue";
 
 //Function to create each cell
 function createBlock() {
-    let block = document.createElement("td");
-    block.classList.add("grid-cell");
-    block.classList.add("empty");
-    block.addEventListener("click", event =>{
-     if (coloring){
-           block.style.backgroundColor = currentColor;
-           block.classList.remove("empty");
+    let cell = document.createElement("td");
+    cell.classList.add("grid-cell");
+    cell.classList.add("empty");
+    cell.addEventListener("click", event =>{
+        cell.style.backgroundColor = currentColor;
+        cell.classList.remove("empty");
+    });
+    cell.addEventListener("mousedown", event =>{
+        coloring = true;
+    });
+    cell.addEventListener("mousemove", event =>{
+        if (coloring){
+            cell.style.backgroundColor = currentColor;
+            cell.classList.remove("empty");
         }
     });
-    block.addEventListener("mousedown", event =>{
-     coloring = true;
+    cell.addEventListener("mouseup", event => {
+        if (coloring){      
+            coloring = false;
+        }
     });
-    block.addEventListener("mousemove", event =>{
-	if (coloring){
-	   block.style.backgroundColor = currentColor;
- 	   block.classList.remove("empty");
-	}
-    });
-    block.addEventListener("mouseup", event => {
-       if (coloring){      
-	   coloring = false;
-       }
-    });
-
-    return block;
+return cell;
 }
-
 
 //Function to add a row
 function addRow() {
@@ -39,7 +36,6 @@ function addRow() {
     let newRow = document.createElement("tr");
     newRow.classList.add("grid-row");
     table.appendChild(newRow);
-
     for (let i = 0; i < col; i++) {
         newRow.appendChild(createBlock());
     }
@@ -50,7 +46,6 @@ function addRow() {
 function addCol() {
     let table = document.getElementById("table");
     let newCol = document.getElementsByClassName("grid-row");
-
     for (let i = 0; i < newCol.length; i++) {
         newCol[i].appendChild(createBlock());
     }
@@ -61,7 +56,7 @@ function addCol() {
 function removeRow(){
  if (row  === 1){
     for (let i = rows[0].cells.length-1; i >= 0; i--){
-	removeCol();
+	   removeCol();
     }
  }
  else {
@@ -89,32 +84,54 @@ function removeCol(){
  }
 }
 
-//function for color red
-function turnRed(){
- currentColor = "red";
+//function to set the current color based on menu selection
+function setColor(color){
+    currentColor = color;
 }
 
-//function for color green
-function turnGreen(){ 
- currentColor = "green";
+//function to change the color of a cell
+function changeColor(cell){
+    cell.style.backgroundColor = currentColor;
+    cell.classList.remove("empty");
 }
 
-//function for color blue
-function turnBlue(){
- currentColor = "blue";
+// function to return an array of cell elements
+function getCells(){
+    let table = document.getElementById("table");
+    let rows = table.getElementsByClassName("grid-row");
+    let cellArray = []
+    for (x = 0; x < rows.length; ++x) {
+        let cells = rows[x].getElementsByClassName("grid-cell")
+        for (y = 0; y < cells.length; ++y) {
+            cellArray.push(cells[y]);
+        }
+    }
+    return cellArray;
 }
 
-//funciton for color purple
-function turnPurple(){
- currentColor = "purple";
+//function to fill all cells with selected color
+function fillAll(){
+    let cells = getCells();
+    for (x = 0; x < cells.length; x++) {
+        changeColor(cells[x]);
+    }
 }
 
-//function for setting uncolored block to color
-//function fillUncolored(){
-//for (let i = 0; i < row.length; i++){
-  //  for (let j = 0; j < row[0].length; j++){
-    //  if (this.color === "empty")
-    //	color = currentColor
-   // }
-// }
-//}
+//function to fill all uncolored cells with selected color. 
+function fillUncolored(){
+    let cells = getCells();
+    for (x = 0; x < cells.length; x++) {
+        if (cells[x].classList.contains("empty")){
+            changeColor(cells[x]);
+        }
+    }
+}
+
+//function to reset all cells
+function clearCells(){
+    cells = getCells();
+    for (x = 0; x < cells.length; x++) {
+        cells[x].style.backgroundColor = "white";
+        cells[x].classList.add("empty");
+    }
+}
