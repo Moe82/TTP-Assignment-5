@@ -4,6 +4,9 @@ let row = 0;
 let coloring = false;
 let currentColor = "Blue";
 
+addRow();
+addCol();
+
 //Function to create each cell
 function createBlock() {
     let cell = document.createElement("td");
