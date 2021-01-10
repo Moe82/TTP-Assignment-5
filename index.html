@@ -5,30 +5,33 @@
         <link rel="stylesheet" href="style.css">    
     </head>
     <body>
-	<div class="bar">
-		<ul>
-			<button class="addRowButton" onclick= "addRow()"> Add Row </button>
-		        <button class="addColButton" onclick= "addCol()"> Add Column </button>
-        		<button class="removeRowButton" onclick= "removeRow()"> Remove Row </button>
-        		<button class="removeColButton" onclick= "removeCol()"> Remove Column </button>
-
-			<label id= "labelColor">Color: </label>
- 			<select class= "dropdown-color">
-				<option style="color:Red;" id="red" onclick="turnRed()"> Red </option>
-				<option style="color:Green;" id="green" onclick="turnGreen()"> Green </option>
-				<option style="color:Blue;" id="blue" onclick="turnBlue()"> Blue </option>
-				<option style="color:Purple;" id="purple" onclick="turnPurple()"> Purple </option>
-			</select>
-
-			<button class="clear" onclick= "clear()"> Clear </button>
-                        <button class="fillAll" onclick= "fillAll()"> Fill All </button>
-                        <button class="fillUncolored" onclick= "fillUncolored()"> Fill Uncolored </button>
-
-		</ul>		
-	</div>
-
-	<table id="table"> </table>
+        <div class="bar">
+            <ul>
+                <button class="addRowButton" onclick= "addRow()"> Add Row </button>
+                <button class="addColButton" onclick= "addCol()"> Add Column </button>
+                <button class="removeRowButton" onclick= "removeRow()"> Remove Row </button>
+                <button class="removeColButton" onclick= "removeCol()"> Remove Column </button>
+                <select onChange="setColor(this.value)">
+                    <option>Blue</option>
+                    <option>Red</option>
+                    <option>White</option>
+                    <option>Black</option>
+                    <option>Grey</option>
+                    <option>Yellow</option>
+                    <option>Red</option>
+                    <option>Blue</option>
+                    <option>Green</option>
+                    <option>Brown</option>
+                    <option>Pink</option>
+                    <option>Orange</option>
+                    <option>Purple</option>
+                </select>
+                <button onclick= "clearCells()"> Clear </button>
+                <button class="fillAll" onclick= "fillAll()"> Fill All </button>
+                <button class="fillUncolored" onclick= "fillUncolored()"> Fill Uncolored </button>
+            </ul>		
+        </div>
+        <table id="table"> </table>
         <script src="script.js"></script>
-	
     </body>
 </html> 
